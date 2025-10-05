@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import apiClient from "../api/client";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthProvider";
 
@@ -21,7 +21,7 @@ function Login() {
     };
 
     try {
-      const res = await axios.post("http://localhost:4001/user/login", userInfo);
+      const res = await apiClient.post("/user/login", userInfo);
 
       if (res.data && res.data.user) {
         // save user in context + localStorage

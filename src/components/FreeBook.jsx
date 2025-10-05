@@ -6,7 +6,7 @@ import Slider from "react-slick";
 
 import list from '../../public/list.json'
 import Cards from './Cards'; 
-import axios  from 'axios';
+import apiClient from "../api/client";
 import { useState } from 'react';
 import { useEffect } from 'react';
 function FreeBook() {
@@ -14,7 +14,7 @@ function FreeBook() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+        const res = await apiClient.get("/book");
       
         const data=res.data.filter((data)=>data.category==="free")
           console.log(data);

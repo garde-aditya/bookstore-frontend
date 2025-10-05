@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";   // ✅ import useForm
 import { Link, useLocation, useNavigate } from "react-router-dom";     // ✅ import Link
 import Login from "./Login";
-import axios from "axios"; 
+import apiClient from "../api/client"; 
 import toast from "react-hot-toast";
 
 function Signup() {
@@ -23,7 +23,7 @@ function Signup() {
     email:data.email,
     password:data.password,
    }
-    await axios.post("http://localhost:4001/user/signup" , userInfo)
+    await apiClient.post("/user/signup" , userInfo)
    .then((res)=>{
     console.log(res.data)
     if(res.data){
